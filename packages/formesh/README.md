@@ -4,7 +4,7 @@
 
 `@mhasansagor/formesh` is a small, framework-agnostic form state library built for forms that outgrow `useState` — long ERP/CRM-style forms made of independent sections, each merging into one plain JavaScript object, with validation, debounced sync, and derived fields as first-class primitives instead of hand-rolled hooks per component.
 
-[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](../../LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](/LICENSE)
 [![Status](https://img.shields.io/badge/status-active%20development-orange.svg)]()
 [![Tests](https://img.shields.io/badge/tests-124%20passing-brightgreen.svg)]()
 [![Core size](https://img.shields.io/badge/core-3.4%20KB%20gzip-success.svg)]()
@@ -149,23 +149,21 @@ A Context-based form re-renders every consumer on every keystroke, regardless of
 
 ## Repository structure
 
-This is a pnpm workspace. The library itself lives under `packages/formesh`.
+This is a pnpm workspace. This file is the single source of truth for the library's documentation — it physically lives here, at `packages/formesh/README.md`, and the repo root's `README.md` is a **symlink** to this exact file, so both locations always show identical, up-to-date content with nothing to keep in sync manually.
 
 ```
 formesh/
+├── README.md                → symlink → packages/formesh/README.md
 ├── packages/
-│   └── formesh/            → the published package (@mhasansagor/formesh)
+│   └── formesh/
+│       ├── README.md        → the real file (this one)
 │       ├── src/
 │       └── tests/
 ├── examples/
-│   └── basic-react/        → example app (planned)
-├── docs/
-│   └── readme.template.md  → source of truth for this file — edit here, not README.md directly
-├── scripts/
-│   └── sync-readme.mjs     → generates root README.md and packages/formesh/README.md from the template
+│   └── basic-react/         → example app (planned)
 ├── LICENSE
-├── .github/workflows/      → CI pipeline
-└── .changeset/             → versioning config
+├── .github/workflows/       → CI pipeline
+└── .changeset/               → versioning config
 ```
 
 ## Contributing
@@ -178,12 +176,11 @@ pnpm lint        # ESLint, across all packages
 pnpm typecheck   # tsc --noEmit, strict mode, across all packages
 pnpm test        # Vitest, across all packages
 pnpm build       # tsup, all entry points
-pnpm docs:sync   # regenerate README.md files from docs/readme.template.md
 ```
 
-Please run the full pipeline above before opening a pull request — CI runs the same commands and will fail on any regression, including a stale README (`pnpm docs:sync --check`).
+Please run the full pipeline above before opening a pull request — CI runs the same commands and will fail on any regression.
 
-If you're editing documentation, **edit `docs/readme.template.md`, not `README.md` or `packages/formesh/README.md` directly** — those two are generated and any manual edit will be overwritten the next time someone runs `pnpm docs:sync`.
+Edit this file directly (`packages/formesh/README.md`) — the root `README.md` is a symlink to it, so there is nothing separate to keep updated.
 
 ## Author
 
@@ -191,4 +188,4 @@ Built by **Mehedi Hasan** ([@mhasansagor](https://github.com/mhasansagor)), out 
 
 ## License
 
-Apache License, Version 2.0 — see the [`LICENSE`](../../LICENSE) file, or the [official license text](https://www.apache.org/licenses/LICENSE-2.0).
+Apache License, Version 2.0 — see the [`LICENSE`](/LICENSE) file, or the [official license text](https://www.apache.org/licenses/LICENSE-2.0).
