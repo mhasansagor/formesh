@@ -162,10 +162,8 @@ Please run the full pipeline above before opening a pull request — CI runs the
 
 ## Author
 
-Built by **Mehedi Hasan Sagor** ([@mhasansagor](https://github.com/mhasansagor)), out of real multi-module ERP form work, and generalized to be useful well beyond it.
+Built by **Mehedi Hasan** ([@mhasansagor](https://github.com/mhasansagor)), out of real multi-module ERP form work, and generalized to be useful well beyond it.
 
 ## License
 
-Apache License Version 2.0, January 2004
-
-See the [full license text](https://www.apache.org/licenses/LICENSE-2.0).
+[MIT](./LICENSE)
