@@ -1,5 +1,5 @@
 {
-  "name": "@mhasansagor/formesh",
+  "name": "react-formesh",
   "version": "0.1.4",
   "description": "Framework-agnostic, fine-grained form state for complex multi-section forms.",
   "license": "Apache-2.0",

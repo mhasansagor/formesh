@@ -2,7 +2,7 @@
 
 **Multi-section forms for React, without the re-render tax.**
 
-`@mhasansagor/formesh` is a small, framework-agnostic form state library built for forms that outgrow `useState` — long ERP/CRM-style forms made of independent sections, each merging into one plain JavaScript object, with validation, debounced sync, and derived fields as first-class primitives instead of hand-rolled hooks per component.
+`react-formesh` is a small, framework-agnostic form state library built for forms that outgrow `useState` — long ERP/CRM-style forms made of independent sections, each merging into one plain JavaScript object, with validation, debounced sync, and derived fields as first-class primitives instead of hand-rolled hooks per component.
 
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](/LICENSE)
 [![Status](https://img.shields.io/badge/status-active%20development-orange.svg)]()
@@ -26,9 +26,9 @@ ForMesh starts from that problem instead of retrofitting it:
 ## Installation
 
 ```bash
-npm install @mhasansagor/formesh
+npm install react-formesh
 # or
-pnpm add @mhasansagor/formesh
+pnpm add react-formesh
 ```
 
 > **Status:** ForMesh is under active development and not yet published to the public npm registry. The API below reflects what's implemented and tested today; `/file` and `/array` entry points are reserved for upcoming phases (see [Roadmap](#roadmap)).
@@ -36,8 +36,8 @@ pnpm add @mhasansagor/formesh
 ## Quick start
 
 ```tsx
-import { createFormStore } from "@mhasansagor/formesh";
-import { useForm } from "@mhasansagor/formesh/react";
+import { createFormStore } from "react-formesh";
+import { useForm } from "react-formesh/react";
 
 const store = createFormStore({ firstName: "", email: "" });
 
@@ -85,7 +85,7 @@ function JobInfoSection() {
 Validators are plain functions — pure, synchronous, composable. Use the built-ins or write your own; both compose identically.
 
 ```tsx
-import { required, email, minLength } from "@mhasansagor/formesh/validators";
+import { required, email, minLength } from "react-formesh/validators";
 
 const form = useForm(store, {
   validation: {
@@ -111,7 +111,7 @@ form.isValid;   // false
 One wrapper, any target — a whole store, a section, or (soon) an array row. Writes batch and commit after a quiet period; reads stay live the whole time.
 
 ```tsx
-import { useDebouncedSync } from "@mhasansagor/formesh/react";
+import { useDebouncedSync } from "react-formesh/react";
 
 function EmployeeInfoSection() {
   const section = useForm(store, { section: "employeeInfo" });
@@ -124,7 +124,7 @@ function EmployeeInfoSection() {
 Derived and cascading fields subscribe to one path and react to real changes only:
 
 ```tsx
-import { useWatch } from "@mhasansagor/formesh/react";
+import { useWatch } from "react-formesh/react";
 
 useWatch(store, "jobInfo.department", (department) => {
   store.setValue("jobInfo.designation", "");
@@ -143,8 +143,8 @@ A Context-based form re-renders every consumer on every keystroke, regardless of
 | Field registration & normalization | ✅ Shipped |
 | Debounced sync & `watch` | ✅ Shipped |
 | Validation (`/validators`) | ✅ Shipped |
-| File uploads (`/file`) | 🚧 In progress |
-| Field arrays (`/array`) | 🚧 In progress |
+| File uploads (`/file`) | ✅ Shipped |
+| Field arrays (`/array`) | ✅ Shipped |
 | TypeScript path autocomplete, `FormDebugger` | 📋 Planned |
 
 ## Repository structure
