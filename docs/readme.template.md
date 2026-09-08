@@ -4,7 +4,7 @@
 
 `@mhasansagor/formesh` is a small, framework-agnostic form state library built for forms that outgrow `useState` — long ERP/CRM-style forms made of independent sections, each merging into one plain JavaScript object, with validation, debounced sync, and derived fields as first-class primitives instead of hand-rolled hooks per component.
 
-[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](./LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)]({{LICENSE}})
 [![Status](https://img.shields.io/badge/status-active%20development-orange.svg)]()
 [![Tests](https://img.shields.io/badge/tests-124%20passing-brightgreen.svg)]()
 [![Core size](https://img.shields.io/badge/core-3.4%20KB%20gzip-success.svg)]()
@@ -191,4 +191,4 @@ Built by **Mehedi Hasan** ([@mhasansagor](https://github.com/mhasansagor)), out 
 
 ## License
 
-Apache License, Version 2.0 — see the [`LICENSE`](./LICENSE) file, or the [official license text](https://www.apache.org/licenses/LICENSE-2.0).
+Apache License, Version 2.0 — see the [`LICENSE`]({{LICENSE}}) file, or the [official license text](https://www.apache.org/licenses/LICENSE-2.0).

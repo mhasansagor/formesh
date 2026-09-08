@@ -4,7 +4,7 @@
 
 `@mhasansagor/formesh` is a small, framework-agnostic form state library built for forms that outgrow `useState` — long ERP/CRM-style forms made of independent sections, each merging into one plain JavaScript object, with validation, debounced sync, and derived fields as first-class primitives instead of hand-rolled hooks per component.
 
-[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](../../LICENSE)
 [![Status](https://img.shields.io/badge/status-active%20development-orange.svg)]()
 [![Tests](https://img.shields.io/badge/tests-124%20passing-brightgreen.svg)]()
 [![Core size](https://img.shields.io/badge/core-3.4%20KB%20gzip-success.svg)]()
@@ -143,22 +143,47 @@ A Context-based form re-renders every consumer on every keystroke, regardless of
 | Field registration & normalization | ✅ Shipped |
 | Debounced sync & `watch` | ✅ Shipped |
 | Validation (`/validators`) | ✅ Shipped |
-| File uploads (`/file`) | ✅ Shipped |
-| Field arrays (`/array`) | ✅ Shipped |
+| File uploads (`/file`) | 🚧 In progress |
+| Field arrays (`/array`) | 🚧 In progress |
 | TypeScript path autocomplete, `FormDebugger` | 📋 Planned |
+
+## Repository structure
+
+This is a pnpm workspace. The library itself lives under `packages/formesh`.
+
+```
+formesh/
+├── packages/
+│   └── formesh/            → the published package (@mhasansagor/formesh)
+│       ├── src/
+│       └── tests/
+├── examples/
+│   └── basic-react/        → example app (planned)
+├── docs/
+│   └── readme.template.md  → source of truth for this file — edit here, not README.md directly
+├── scripts/
+│   └── sync-readme.mjs     → generates root README.md and packages/formesh/README.md from the template
+├── LICENSE
+├── .github/workflows/      → CI pipeline
+└── .changeset/             → versioning config
+```
 
 ## Contributing
 
-This is a pnpm workspace. Install with `pnpm install`, then:
+From the repo root:
 
 ```bash
-pnpm lint        # ESLint
-pnpm typecheck   # tsc --noEmit, strict mode
-pnpm test        # Vitest
+pnpm install     # install all workspace dependencies
+pnpm lint        # ESLint, across all packages
+pnpm typecheck   # tsc --noEmit, strict mode, across all packages
+pnpm test        # Vitest, across all packages
 pnpm build       # tsup, all entry points
+pnpm docs:sync   # regenerate README.md files from docs/readme.template.md
 ```
 
-Please run the full pipeline above before opening a pull request — CI runs the same four commands and will fail on any regression.
+Please run the full pipeline above before opening a pull request — CI runs the same commands and will fail on any regression, including a stale README (`pnpm docs:sync --check`).
+
+If you're editing documentation, **edit `docs/readme.template.md`, not `README.md` or `packages/formesh/README.md` directly** — those two are generated and any manual edit will be overwritten the next time someone runs `pnpm docs:sync`.
 
 ## Author
 
@@ -166,6 +191,4 @@ Built by **Mehedi Hasan** ([@mhasansagor](https://github.com/mhasansagor)), out 
 
 ## License
 
-Apache License Version 2.0, January 2004
-
-See the [full license text](https://www.apache.org/licenses/LICENSE-2.0).
+Apache License, Version 2.0 — see the [`LICENSE`](../../LICENSE) file, or the [official license text](https://www.apache.org/licenses/LICENSE-2.0).
